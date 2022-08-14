@@ -1,0 +1,10 @@
+
+
+CHIP FourOneMux {
+    IN i0,i1,i2,i3,s0,s1;
+    OUT Y;
+   PARTS:
+   	Twoonemux(i0=i0,i1=i1,sel=s0,y=w1);
+        Twoonemux(i0=i2,i1=i3,sel=s0,y=w2);
+        Twoonemux(i0=w1,i1=w2,sel=s1,y=Y);
+}

@@ -1,0 +1,17 @@
+CHIP USR{
+IN s0,s1,x3,x2,x1,x0,load,y1,y2;
+OUT q1,q2,q3,q0;
+PARTS:
+Twoonemux(i0=false,i1=y1,sel=load,y=in11);
+FourOneMux(i0=q31,i1=in11,i2=q21,i3=x3,s0=s0,s1=s1,Y=in1);
+
+DFF(in=in1,out=q3,out=q31);
+FourOneMux(i0=q21,i1=q31,i2=q11,i3=x2,s0=s0,s1=s1,Y=in2);
+DFF(in=in2,out=q2,out=q21);
+FourOneMux(i0=q11,i1=q21,i2=q01,i3=x1,s0=s0,s1=s1,Y=in3);
+DFF(in=in3,out=q1,out=q11);
+FourOneMux(i0=q01,i1=q11,i2=in41,i3=x0,s0=s0,s1=s1,Y=in4);
+DFF(in=in4,out=q0,out=q01);
+
+Twoonemux(i0=false,i1=y2,sel=load,y=in41);
+}
